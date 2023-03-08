@@ -168,7 +168,7 @@ DOM_luces <- map(unique(poligonos_minucipio$ENLACE),
                  error = function(e)data.frame(ENLACE = .x)))
 
 DOM_luces %<>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_luces_mean.rds")
+  saveRDS("../map_temp/data/temp_luces_mean.rds")
 ```
 
 #### Medida de resumen suma
@@ -186,7 +186,7 @@ DOM_luces <- map(unique(poligonos_minucipio$ENLACE),
                  error = function(e)data.frame(ENLACE = .x)))
 
 DOM_luces %<>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_luces_sum.rds")
+  saveRDS("../map_temp/data/temp_luces_sum.rds")
 
 ```
 
@@ -234,7 +234,7 @@ DOM_suelo <- map(unique(poligonos_minucipio$ENLACE),
                  error = function(e)data.frame(ENLACE = .x)))
 
 DOM_suelo %>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_suelo_suma.rds")
+  saveRDS("../map_temp/data/temp_suelo_suma.rds")
 
 ```
 el procesamiento anterior regresa un `data.frame` con tres columnas, el ENLACE, que corresponde al código del municipio, X2016_crops.coverfraction y X2016_urban.coverfraction. 
@@ -262,7 +262,7 @@ DOM_dist_salud <- map(unique(poligonos_minucipio$ENLACE),
                  error = function(e)data.frame(ENLACE = .x)))
 
 DOM_dist_salud %>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_salud_mean.rds")
+  saveRDS("../map_temp/data/temp_salud_mean.rds")
 ```
 
 ### Medida de resumen suma
@@ -278,7 +278,7 @@ DOM_dist_salud <- map(unique(poligonos_minucipio$ENLACE),
                       error = function(e)data.frame(ENLACE = .x)))
 
 DOM_dist_salud %>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_salud_suma.rds")
+  saveRDS("../map_temp/data/temp_salud_suma.rds")
 
 ```
 
@@ -307,7 +307,7 @@ DOM_CSP_gHM <- map(unique(poligonos_minucipio$ENLACE),
                       error = function(e)data.frame(id_municipio = .x)))
 
 DOM_CSP_gHM %>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_gHM_mean.rds")
+  saveRDS("../map_temp/data/temp_gHM_mean.rds")
 ```
 
 ### Medida de resumen suma
@@ -323,7 +323,7 @@ DOM_CSP_gHM <- map(unique(poligonos_minucipio$ENLACE),
                    error = function(e)data.frame(id_municipio = .x)))
 
 DOM_CSP_gHM %>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_gHM_suma.rds")
+  saveRDS("../map_temp/data/temp_gHM_suma.rds")
 
 ```
 
@@ -450,7 +450,7 @@ A continuación se presenta un comparativo entre la información obtenida en Goo
 ```{r,eval=TRUE, echo=FALSE, fig.show='hold',  out.width = "500px", out.height="350px",fig.align='center'}
 
 knitr::include_graphics(c("www/Figura3_000_modificacion_humana.png",
-                         "../map_temp/modificacion_humana.jpg"),)
+                         "www/modificacion_humana.jpg"),)
 
 ```
 
@@ -498,11 +498,11 @@ La imagen satelital de la variable `accesibilidad_hosp_caminado` proporciona inf
 ```{r,eval=TRUE, echo=FALSE, fig.show='hold',  out.width = "500px", out.height="350px",fig.align='center'}
 
 knitr::include_graphics(c("www/Figura4_000_accesibilidad_hosp_caminado.png",
-                         "../map_temp/accesibilidad_hosp_caminado.jpg"),)
+                         "www/accesibilidad_hosp_caminado.jpg"),)
 
 ```
 
-## Accesibilidad hospitales
+### Accesibilidad hospitales
 
 La variable `accesibilidad_hospitales` mide el tiempo promedio que una persona tarda en llegar a clínicas u hospitales, independientemente del medio de transporte utilizado. Como esta variable utiliza la misma fuente de datos que `accesibilidad_hosp_caminado`, su interpretación visual en escala de grises es similar, donde los tonos más oscuros indican tiempos menores y los tonos más claros, tiempos mayores.
 
@@ -543,11 +543,11 @@ tmap_save(map_accesibilidad_hospitales,
 ```{r,eval=TRUE, echo=FALSE, fig.show='hold',  out.width = "500px", out.height="350px",fig.align='center'}
 
 knitr::include_graphics(c("www/Figura5_000_accesibilidad_hosp.png",
-                         "../map_temp/accesibilidad_hospitales.jpg"),)
+                         "www/accesibilidad_hospitales.jpg"),)
 
 ```
 
-## Cubrimiento urbano
+### Cubrimiento urbano
 
 La imagen satelital representa el cubrimiento urbano, en una escala de tonos que va desde el negro, que indica ausencia de construcciones urbanas, hasta el blanco, que representa la presencia de edificaciones. Esta variable es relevante porque permite identificar las zonas con mayor densidad de población.
 
@@ -599,11 +599,11 @@ Al comparar la imagen obtenida mediante la transformación logarítmica con la i
 
 ```{r,eval=TRUE, echo=FALSE, fig.show='hold',  out.width = "500px", out.height="350px",fig.align='center'}
 knitr::include_graphics(c("www/Figura6_000_cubrimiento_urbano.png",
-                         "../map_temp/cubrimiento_urbano.jpg"),)
+                         "www/cubrimiento_urbano.jpg"),)
 
 ```
 
-## Cubrimiento cultivo
+### Cubrimiento cultivo
 
 La variable `cubrimiento_cultivo` proporciona información sobre las áreas de cultivo presentes en los municipios y su interpretación visual en la imagen satelital es similar a las variables analizadas anteriormente. Los tonos más oscuros indican baja presencia de cultivos, mientras que los tonos más claros indican mayor presencia de cultivos.
 
@@ -652,11 +652,11 @@ tmap_save(map_cubrimiento_cultivo,
 ```{r,eval=TRUE, echo=FALSE, fig.show='hold',  out.width = "500px", out.height="350px",fig.align='center'}
 
 knitr::include_graphics(c("www/Figura7_000_cubrimiento_cultivo.png",
-                         "../map_temp/cubrimiento_cultivo.jpg"),)
+                         "www/cubrimiento_cultivo.jpg"),)
 
 ```
 
-## Luces nocturnas
+### Luces nocturnas
 
 La última variable que validaremos es la intensidad lumínica o luces nocturnas. La variable fue capturada por el satélite en una resolución de 30 metros por píxel. Los valores de la imagen van desde 0 (sin luces) hasta 63 (máxima cantidad de luces), y se pueden utilizar para analizar patrones de urbanización, así como para estimar el crecimiento de ciudades y la densidad de población. Por tanto, se espera que esta variable sea un reflejo de las densidades posesionales de los municipios.  
 
@@ -692,7 +692,7 @@ tmap_save(map_luces,
 ```{r,eval=TRUE, echo=FALSE, fig.show='hold',  out.width = "500px", out.height="350px",fig.align='center'}
 
 knitr::include_graphics(c("www/Figura8_000_lights.png",
-                         "../map_temp/luces.jpg"),)
+                         "www/luces.jpg"),)
 
 ```
 

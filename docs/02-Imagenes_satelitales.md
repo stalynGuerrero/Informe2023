@@ -154,7 +154,7 @@ DOM_luces <- map(unique(poligonos_minucipio$ENLACE),
                  error = function(e)data.frame(ENLACE = .x)))
 
 DOM_luces %<>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_luces_mean.rds")
+  saveRDS("../map_temp/data/temp_luces_mean.rds")
 ```
 
 #### Medida de resumen suma
@@ -173,7 +173,7 @@ DOM_luces <- map(unique(poligonos_minucipio$ENLACE),
                  error = function(e)data.frame(ENLACE = .x)))
 
 DOM_luces %<>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_luces_sum.rds")
+  saveRDS("../map_temp/data/temp_luces_sum.rds")
 ```
 
 ## Cubrimiento de suelo urbano y cubrimiento de suelo cultivos
@@ -223,7 +223,7 @@ DOM_suelo <- map(unique(poligonos_minucipio$ENLACE),
                  error = function(e)data.frame(ENLACE = .x)))
 
 DOM_suelo %>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_suelo_suma.rds")
+  saveRDS("../map_temp/data/temp_suelo_suma.rds")
 ```
 el procesamiento anterior regresa un `data.frame` con tres columnas, el ENLACE, que corresponde al código del municipio, X2016_crops.coverfraction y X2016_urban.coverfraction. 
 
@@ -252,7 +252,7 @@ DOM_dist_salud <- map(unique(poligonos_minucipio$ENLACE),
                  error = function(e)data.frame(ENLACE = .x)))
 
 DOM_dist_salud %>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_salud_mean.rds")
+  saveRDS("../map_temp/data/temp_salud_mean.rds")
 ```
 
 ### Medida de resumen suma
@@ -269,7 +269,7 @@ DOM_dist_salud <- map(unique(poligonos_minucipio$ENLACE),
                       error = function(e)data.frame(ENLACE = .x)))
 
 DOM_dist_salud %>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_salud_suma.rds")
+  saveRDS("../map_temp/data/temp_salud_suma.rds")
 ```
 
 ## CSP gHM: Global Human Modification
@@ -299,7 +299,7 @@ DOM_CSP_gHM <- map(unique(poligonos_minucipio$ENLACE),
                       error = function(e)data.frame(id_municipio = .x)))
 
 DOM_CSP_gHM %>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_gHM_mean.rds")
+  saveRDS("../map_temp/data/temp_gHM_mean.rds")
 ```
 
 ### Medida de resumen suma
@@ -316,7 +316,7 @@ DOM_CSP_gHM <- map(unique(poligonos_minucipio$ENLACE),
                    error = function(e)data.frame(id_municipio = .x)))
 
 DOM_CSP_gHM %>% bind_rows() %>% 
-  saveRDS("map_temp/data/temp_gHM_suma.rds")
+  saveRDS("../map_temp/data/temp_gHM_suma.rds")
 ```
 
 ## Consolidando las variables satelitales
@@ -746,7 +746,7 @@ tmap_save(map_modificacion_humana,
 
 A continuación se presenta un comparativo entre la información obtenida en Google Earth Engine y la procesada en R, donde se puede apreciar que el uso del promedio de los pixeles es una medida de resumen más adecuada, ya que refleja de mejor manera la información capturada por el satélite. Es importante destacar que esta comparación es esencial para validar el proceso de procesamiento de las variables satelitales, ya que permite verificar que la información obtenida en R se asemeje a la imagen de referencia disponible en Google Earth Engine. De esta manera, se asegura que la información procesada sea lo más cercana posible a la realidad y se evita la toma de decisiones basadas en información errónea. 
 
-<img src="www/Figura3_000_modificacion_humana.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="../map_temp/modificacion_humana.jpg" width="500px" height="350px" style="display: block; margin: auto;" />
+<img src="www/Figura3_000_modificacion_humana.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="www/modificacion_humana.jpg" width="500px" height="350px" style="display: block; margin: auto;" />
 
 ### Accesibilidad hospitales caminado
 
@@ -790,9 +790,9 @@ tmap_save(map_accesibilidad_hosp_caminado,
 La imagen satelital de la variable `accesibilidad_hosp_caminado` proporciona información sobre los tiempos promedio que una persona tarda en llegar a un hospital o clínica. En la escala de grises utilizada para la gráfica, los tonos más oscuros indican tiempos menores, mientras que los tonos más claros indican tiempos mayores. Al observar la imagen, podemos confirmar que el promedio sigue siendo la medida de resumen que mejor refleja la información capturada por el satélite.
 
 
-<img src="www/Figura4_000_accesibilidad_hosp_caminado.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="../map_temp/accesibilidad_hosp_caminado.jpg" width="500px" height="350px" style="display: block; margin: auto;" />
+<img src="www/Figura4_000_accesibilidad_hosp_caminado.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="www/accesibilidad_hosp_caminado.jpg" width="500px" height="350px" style="display: block; margin: auto;" />
 
-## Accesibilidad hospitales
+### Accesibilidad hospitales
 
 La variable `accesibilidad_hospitales` mide el tiempo promedio que una persona tarda en llegar a clínicas u hospitales, independientemente del medio de transporte utilizado. Como esta variable utiliza la misma fuente de datos que `accesibilidad_hosp_caminado`, su interpretación visual en escala de grises es similar, donde los tonos más oscuros indican tiempos menores y los tonos más claros, tiempos mayores.
 
@@ -831,9 +831,9 @@ tmap_save(map_accesibilidad_hospitales,
 )
 ```
 
-<img src="www/Figura5_000_accesibilidad_hosp.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="../map_temp/accesibilidad_hospitales.jpg" width="500px" height="350px" style="display: block; margin: auto;" />
+<img src="www/Figura5_000_accesibilidad_hosp.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="www/accesibilidad_hospitales.jpg" width="500px" height="350px" style="display: block; margin: auto;" />
 
-## Cubrimiento urbano
+### Cubrimiento urbano
 
 La imagen satelital representa el cubrimiento urbano, en una escala de tonos que va desde el negro, que indica ausencia de construcciones urbanas, hasta el blanco, que representa la presencia de edificaciones. Esta variable es relevante porque permite identificar las zonas con mayor densidad de población.
 
@@ -883,9 +883,9 @@ Como se puede notar, la modificación realizada en el código, en la cual se inc
 
 Al comparar la imagen obtenida mediante la transformación logarítmica con la imagen satelital original, no es claro cual de las dos imágenes representa de mejor forma la información capturada por el satélite. Dado que, las dos imágenes muestran valores altos en las ciudades principales, sin embargo, la figura de la suma muestra unos municipios en naranja que nos son reflejados por la gráfica obtenida con el promedio.  
 
-<img src="www/Figura6_000_cubrimiento_urbano.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="../map_temp/cubrimiento_urbano.jpg" width="500px" height="350px" style="display: block; margin: auto;" />
+<img src="www/Figura6_000_cubrimiento_urbano.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="www/cubrimiento_urbano.jpg" width="500px" height="350px" style="display: block; margin: auto;" />
 
-## Cubrimiento cultivo
+### Cubrimiento cultivo
 
 La variable `cubrimiento_cultivo` proporciona información sobre las áreas de cultivo presentes en los municipios y su interpretación visual en la imagen satelital es similar a las variables analizadas anteriormente. Los tonos más oscuros indican baja presencia de cultivos, mientras que los tonos más claros indican mayor presencia de cultivos.
 
@@ -930,9 +930,9 @@ tmap_save(map_cubrimiento_cultivo,
 ```
 
 
-<img src="www/Figura7_000_cubrimiento_cultivo.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="../map_temp/cubrimiento_cultivo.jpg" width="500px" height="350px" style="display: block; margin: auto;" />
+<img src="www/Figura7_000_cubrimiento_cultivo.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="www/cubrimiento_cultivo.jpg" width="500px" height="350px" style="display: block; margin: auto;" />
 
-## Luces nocturnas
+### Luces nocturnas
 
 La última variable que validaremos es la intensidad lumínica o luces nocturnas. La variable fue capturada por el satélite en una resolución de 30 metros por píxel. Los valores de la imagen van desde 0 (sin luces) hasta 63 (máxima cantidad de luces), y se pueden utilizar para analizar patrones de urbanización, así como para estimar el crecimiento de ciudades y la densidad de población. Por tanto, se espera que esta variable sea un reflejo de las densidades posesionales de los municipios.  
 
@@ -965,7 +965,7 @@ tmap_save(map_luces,
 )
 ```
 
-<img src="www/Figura8_000_lights.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="../map_temp/luces.jpg" width="500px" height="350px" style="display: block; margin: auto;" />
+<img src="www/Figura8_000_lights.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="www/luces.jpg" width="500px" height="350px" style="display: block; margin: auto;" />
 
 ## Correlación estimación directa
 

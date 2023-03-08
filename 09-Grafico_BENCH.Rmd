@@ -149,3 +149,15 @@ La capa `geom_errorbar()` se utiliza para agregar los intervalos de confianza de
 La capa `geom_jitter()` se utiliza para agregar los puntos de las estimaciones de cada método, con un poco de ruido para que no se superpongan.
 
 Finalmente, la capa `labs()` se utiliza para agregar etiquetas a los ejes del gráfico. En este caso, se utiliza `Región` para el eje x. El objeto p contiene el gráfico creado.
+
+
+# Resultados finales 
+```{r, echo=FALSE}
+TablaFinal <- readRDS('../Data/TablaFinal.Rds')
+TablaFinal %>% transmute("Codico del municipio" = id_dominio, 
+                      Estimacion = FH_RBench, 
+                      "Error estandar" = rmse_FH, 
+                      "CV(%)" = rrmse_FH*100
+                      ) %>% arrange(`CV(%)`) %>% tba()
+```
+
