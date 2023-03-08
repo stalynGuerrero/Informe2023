@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.11 Cubrimiento urbano | Estimación de la tasa de informalidad en República Dominicana empleando modelos de área con transformación arcoseno</title>
+  <meta name="description" content="Documentos con la descripción del proceso de compilación en R." />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.11 Cubrimiento urbano | Estimación de la tasa de informalidad en República Dominicana empleando modelos de área con transformación arcoseno" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Documentos con la descripción del proceso de compilación en R." />
+  <meta name="github-repo" content="psirusteam/HHS-Handbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.11 Cubrimiento urbano | Estimación de la tasa de informalidad en República Dominicana empleando modelos de área con transformación arcoseno" />
+  
+  <meta name="twitter:description" content="Documentos con la descripción del proceso de compilación en R." />
+  
+
+
+
+<meta name="date" content="2023-03-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="accesibilidad-hospitales.html"/>
+<link rel="next" href="cubrimiento-cultivo.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Informe de resultados para República Dominicana</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="1" data-path="uso-de-imágenes-satelitales-y-sae.html"><a href="uso-de-imágenes-satelitales-y-sae.html"><i class="fa fa-check"></i><b>1</b> Uso de imágenes satelitales y SAE</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="fuentes-de-datos-de-imágenes-satelitales.html"><a href="fuentes-de-datos-de-imágenes-satelitales.html"><i class="fa fa-check"></i><b>1.1</b> Fuentes de datos de imágenes satelitales</a></li>
+<li class="chapter" data-level="1.2" data-path="google-earth-eninge.html"><a href="google-earth-eninge.html"><i class="fa fa-check"></i><b>1.2</b> Google Earth Eninge</a></li>
+<li class="chapter" data-level="1.3" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html"><i class="fa fa-check"></i><b>1.3</b> Instalación de rgee</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="descarga-de-imágenes-satelitales-y-validación-de-visual.html"><a href="descarga-de-imágenes-satelitales-y-validación-de-visual.html"><i class="fa fa-check"></i><b>2</b> Descarga de imágenes satelitales y validación de visual</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="librerias-requeridas.html"><a href="librerias-requeridas.html"><i class="fa fa-check"></i><b>2.1</b> Librerias requeridas</a></li>
+<li class="chapter" data-level="2.2" data-path="inicializando-google-earth-engine-desde-r.html"><a href="inicializando-google-earth-engine-desde-r.html"><i class="fa fa-check"></i><b>2.2</b> Inicializando Google Earth Engine desde R</a></li>
+<li class="chapter" data-level="2.3" data-path="descarga-de-información-del-satélite-a-nivel-distrito..html"><a href="descarga-de-información-del-satélite-a-nivel-distrito..html"><i class="fa fa-check"></i><b>2.3</b> Descarga de información del Satélite a nivel distrito.</a></li>
+<li class="chapter" data-level="2.4" data-path="descarga-de-información-satélite-a-nivel-municipal.html"><a href="descarga-de-información-satélite-a-nivel-municipal.html"><i class="fa fa-check"></i><b>2.4</b> Descarga de información Satélite a nivel municipal</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="descarga-de-información-satélite-a-nivel-municipal.html"><a href="descarga-de-información-satélite-a-nivel-municipal.html#luces-nocturnas"><i class="fa fa-check"></i><b>2.4.1</b> Luces nocturnas</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="cubrimiento-de-suelo-urbano-y-cubrimiento-de-suelo-cultivos.html"><a href="cubrimiento-de-suelo-urbano-y-cubrimiento-de-suelo-cultivos.html"><i class="fa fa-check"></i><b>2.5</b> Cubrimiento de suelo urbano y cubrimiento de suelo cultivos</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="cubrimiento-de-suelo-urbano-y-cubrimiento-de-suelo-cultivos.html"><a href="cubrimiento-de-suelo-urbano-y-cubrimiento-de-suelo-cultivos.html#medida-de-resumen-la-media-1"><i class="fa fa-check"></i><b>2.5.1</b> Medida de resumen la media</a></li>
+<li class="chapter" data-level="2.5.2" data-path="cubrimiento-de-suelo-urbano-y-cubrimiento-de-suelo-cultivos.html"><a href="cubrimiento-de-suelo-urbano-y-cubrimiento-de-suelo-cultivos.html#medida-de-resumen-suma-1"><i class="fa fa-check"></i><b>2.5.2</b> Medida de resumen suma</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="distancia-a-hospitales.html"><a href="distancia-a-hospitales.html"><i class="fa fa-check"></i><b>2.6</b> Distancia a hospitales</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="distancia-a-hospitales.html"><a href="distancia-a-hospitales.html#medida-de-resumen-la-media-2"><i class="fa fa-check"></i><b>2.6.1</b> Medida de resumen la media</a></li>
+<li class="chapter" data-level="2.6.2" data-path="distancia-a-hospitales.html"><a href="distancia-a-hospitales.html#medida-de-resumen-suma-2"><i class="fa fa-check"></i><b>2.6.2</b> Medida de resumen suma</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="csp-ghm-global-human-modification.html"><a href="csp-ghm-global-human-modification.html"><i class="fa fa-check"></i><b>2.7</b> CSP gHM: Global Human Modification</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="csp-ghm-global-human-modification.html"><a href="csp-ghm-global-human-modification.html#medida-de-resumen-la-media-3"><i class="fa fa-check"></i><b>2.7.1</b> Medida de resumen la media</a></li>
+<li class="chapter" data-level="2.7.2" data-path="csp-ghm-global-human-modification.html"><a href="csp-ghm-global-human-modification.html#medida-de-resumen-suma-3"><i class="fa fa-check"></i><b>2.7.2</b> Medida de resumen suma</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="consolidando-las-variables-satelitales.html"><a href="consolidando-las-variables-satelitales.html"><i class="fa fa-check"></i><b>2.8</b> Consolidando las variables satelitales</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="consolidando-las-variables-satelitales.html"><a href="consolidando-las-variables-satelitales.html#medida-de-resumen-la-media-4"><i class="fa fa-check"></i><b>2.8.1</b> Medida de resumen la media</a></li>
+<li class="chapter" data-level="2.8.2" data-path="consolidando-las-variables-satelitales.html"><a href="consolidando-las-variables-satelitales.html#medida-de-resumen-suma-4"><i class="fa fa-check"></i><b>2.8.2</b> Medida de resumen suma</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="creando-mapas-de-las-variables-satelitales.html"><a href="creando-mapas-de-las-variables-satelitales.html"><i class="fa fa-check"></i><b>2.9</b> Creando mapas de las variables satelitales</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="creando-mapas-de-las-variables-satelitales.html"><a href="creando-mapas-de-las-variables-satelitales.html#modificacion-humana"><i class="fa fa-check"></i><b>2.9.1</b> Modificacion humana</a></li>
+<li class="chapter" data-level="2.9.2" data-path="creando-mapas-de-las-variables-satelitales.html"><a href="creando-mapas-de-las-variables-satelitales.html#accesibilidad-hospitales-caminado"><i class="fa fa-check"></i><b>2.9.2</b> Accesibilidad hospitales caminado</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="accesibilidad-hospitales.html"><a href="accesibilidad-hospitales.html"><i class="fa fa-check"></i><b>2.10</b> Accesibilidad hospitales</a></li>
+<li class="chapter" data-level="2.11" data-path="cubrimiento-urbano.html"><a href="cubrimiento-urbano.html"><i class="fa fa-check"></i><b>2.11</b> Cubrimiento urbano</a></li>
+<li class="chapter" data-level="2.12" data-path="cubrimiento-cultivo.html"><a href="cubrimiento-cultivo.html"><i class="fa fa-check"></i><b>2.12</b> Cubrimiento cultivo</a></li>
+<li class="chapter" data-level="2.13" data-path="luces-nocturnas-1.html"><a href="luces-nocturnas-1.html"><i class="fa fa-check"></i><b>2.13</b> Luces nocturnas</a></li>
+<li class="chapter" data-level="2.14" data-path="correlación-estimación-directa.html"><a href="correlación-estimación-directa.html"><i class="fa fa-check"></i><b>2.14</b> Correlación estimación directa</a></li>
+<li class="chapter" data-level="2.15" data-path="estimaciones-directas.html"><a href="estimaciones-directas.html"><i class="fa fa-check"></i><b>2.15</b> Estimaciones directas</a>
+<ul>
+<li class="chapter" data-level="2.15.1" data-path="estimaciones-directas.html"><a href="estimaciones-directas.html#correlación-de-las-variables-satelital"><i class="fa fa-check"></i><b>2.15.1</b> Correlación de las variables satelital</a></li>
+</ul></li>
+<li class="chapter" data-level="2.16" data-path="información-auxiliar-en-el-modelo.html"><a href="información-auxiliar-en-el-modelo.html"><i class="fa fa-check"></i><b>2.16</b> Información auxiliar en el modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estandarizar-insumos.html"><a href="estandarizar-insumos.html"><i class="fa fa-check"></i><b>3</b> Estandarizar insumos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="lectura-de-librerias.html"><a href="lectura-de-librerias.html"><i class="fa fa-check"></i><b>3.1</b> Lectura de librerias</a></li>
+<li class="chapter" data-level="3.2" data-path="lectura-de-encuesta..html"><a href="lectura-de-encuesta..html"><i class="fa fa-check"></i><b>3.2</b> Lectura de encuesta.</a></li>
+<li class="chapter" data-level="3.3" data-path="lectura-de-información-auxiliar-covariable.html"><a href="lectura-de-información-auxiliar-covariable.html"><i class="fa fa-check"></i><b>3.3</b> Lectura de información auxiliar (covariable)</a></li>
+<li class="chapter" data-level="3.4" data-path="otra-fuente-de-información.html"><a href="otra-fuente-de-información.html"><i class="fa fa-check"></i><b>3.4</b> Otra fuente de información</a></li>
+<li class="chapter" data-level="3.5" data-path="definiendo-el-identificador-de-dominio-en-la-shapefile..html"><a href="definiendo-el-identificador-de-dominio-en-la-shapefile..html"><i class="fa fa-check"></i><b>3.5</b> Definiendo el identificador de dominio en la shapefile.</a></li>
+<li class="chapter" data-level="3.6" data-path="validando-id_dominio.html"><a href="validando-id_dominio.html"><i class="fa fa-check"></i><b>3.6</b> Validando id_dominio</a></li>
+<li class="chapter" data-level="3.7" data-path="guardar-archivos.html"><a href="guardar-archivos.html"><i class="fa fa-check"></i><b>3.7</b> Guardar archivos</a></li>
+<li class="chapter" data-level="3.8" data-path="agregados-censales-municipios-y-región..html"><a href="agregados-censales-municipios-y-región..html"><i class="fa fa-check"></i><b>3.8</b> Agregados censales (municipios y región).</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estimación-de-directa-por-dominios.html"><a href="estimación-de-directa-por-dominios.html"><i class="fa fa-check"></i><b>4</b> Estimación de directa por dominios</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lectura-de-librerías.html"><a href="lectura-de-librerías.html"><i class="fa fa-check"></i><b>4.1</b> Lectura de librerías</a></li>
+<li class="chapter" data-level="4.2" data-path="lectura-de-la-encuesta-y-definición-de-parámetros.html"><a href="lectura-de-la-encuesta-y-definición-de-parámetros.html"><i class="fa fa-check"></i><b>4.2</b> Lectura de la encuesta y definición de parámetros</a></li>
+<li class="chapter" data-level="4.3" data-path="definición-del-diseño-muestral-con-la-libreria-survey.html"><a href="definición-del-diseño-muestral-con-la-libreria-survey.html"><i class="fa fa-check"></i><b>4.3</b> Definición del diseño muestral con la libreria survey</a></li>
+<li class="chapter" data-level="4.4" data-path="calculo-del-indicador.html"><a href="calculo-del-indicador.html"><i class="fa fa-check"></i><b>4.4</b> Calculo del indicador</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="calculo-del-indicador.html"><a href="calculo-del-indicador.html#guardar-resultado-de-la-estimación-directa"><i class="fa fa-check"></i><b>4.4.1</b> Guardar resultado de la estimación directa</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="función-generalizada-de-varianza.html"><a href="función-generalizada-de-varianza.html"><i class="fa fa-check"></i><b>5</b> Función generalizada de varianza</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lectura-de-librerías-1.html"><a href="lectura-de-librerías-1.html"><i class="fa fa-check"></i><b>5.1</b> Lectura de librerías</a></li>
+<li class="chapter" data-level="5.2" data-path="lectura-del-la-base-de-datos.html"><a href="lectura-del-la-base-de-datos.html"><i class="fa fa-check"></i><b>5.2</b> Lectura del la base de datos</a></li>
+<li class="chapter" data-level="5.3" data-path="lectura-de-las-estimaciones-directas-del-indicador.html"><a href="lectura-de-las-estimaciones-directas-del-indicador.html"><i class="fa fa-check"></i><b>5.3</b> Lectura de las estimaciones directas del indicador</a></li>
+<li class="chapter" data-level="5.4" data-path="gráficas-exploratorias.html"><a href="gráficas-exploratorias.html"><i class="fa fa-check"></i><b>5.4</b> Gráficas exploratorias</a></li>
+<li class="chapter" data-level="5.5" data-path="ajustando-el-modelo-log-lineal-de-la-varianza.html"><a href="ajustando-el-modelo-log-lineal-de-la-varianza.html"><i class="fa fa-check"></i><b>5.5</b> Ajustando el modelo log-lineal de la varianza</a></li>
+<li class="chapter" data-level="5.6" data-path="validaciones-sobre-el-modelo.html"><a href="validaciones-sobre-el-modelo.html"><i class="fa fa-check"></i><b>5.6</b> Validaciones sobre el modelo</a></li>
+<li class="chapter" data-level="5.7" data-path="otras-validaciones-sobre-el-resultado-del-modelo..html"><a href="otras-validaciones-sobre-el-resultado-del-modelo..html"><i class="fa fa-check"></i><b>5.7</b> Otras validaciones sobre el resultado del modelo.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="estimación-del-modelo-de-área.html"><a href="estimación-del-modelo-de-área.html"><i class="fa fa-check"></i><b>6</b> Estimación del modelo de área</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="lectura-de-librerías-2.html"><a href="lectura-de-librerías-2.html"><i class="fa fa-check"></i><b>6.1</b> Lectura de librerías</a></li>
+<li class="chapter" data-level="6.2" data-path="lectura-de-bases-de-datos.html"><a href="lectura-de-bases-de-datos.html"><i class="fa fa-check"></i><b>6.2</b> Lectura de bases de datos</a></li>
+<li class="chapter" data-level="6.3" data-path="consolidando-las-bases-de-datos..html"><a href="consolidando-las-bases-de-datos..html"><i class="fa fa-check"></i><b>6.3</b> Consolidando las bases de datos.</a></li>
+<li class="chapter" data-level="6.4" data-path="estimando-el-modelo-de-área-con-transformación-arcoseno.html"><a href="estimando-el-modelo-de-área-con-transformación-arcoseno.html"><i class="fa fa-check"></i><b>6.4</b> Estimando el modelo de área con transformación arcoseno</a></li>
+<li class="chapter" data-level="6.5" data-path="estimaciones-de-los-dominios-a-partir-del-modelo..html"><a href="estimaciones-de-los-dominios-a-partir-del-modelo..html"><i class="fa fa-check"></i><b>6.5</b> Estimaciones de los dominios a partir del modelo.</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="validación-del-modelo-de-área.html"><a href="validación-del-modelo-de-área.html"><i class="fa fa-check"></i><b>7</b> Validación del modelo de área</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lectura-de-librerías-3.html"><a href="lectura-de-librerías-3.html"><i class="fa fa-check"></i><b>7.1</b> Lectura de librerías</a></li>
+<li class="chapter" data-level="7.2" data-path="leer-bases-de-datos.html"><a href="leer-bases-de-datos.html"><i class="fa fa-check"></i><b>7.2</b> Leer bases de datos</a></li>
+<li class="chapter" data-level="7.3" data-path="análisis-de-residuales-y-efectos-aleatorios.html"><a href="análisis-de-residuales-y-efectos-aleatorios.html"><i class="fa fa-check"></i><b>7.3</b> Análisis de residuales y efectos aleatorios</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="análisis-de-residuales-y-efectos-aleatorios.html"><a href="análisis-de-residuales-y-efectos-aleatorios.html#qq-plots"><i class="fa fa-check"></i><b>7.3.1</b> QQ plots</a></li>
+<li class="chapter" data-level="7.3.2" data-path="análisis-de-residuales-y-efectos-aleatorios.html"><a href="análisis-de-residuales-y-efectos-aleatorios.html#densidades"><i class="fa fa-check"></i><b>7.3.2</b> Densidades</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="coeficiente-de-determinación.html"><a href="coeficiente-de-determinación.html"><i class="fa fa-check"></i><b>7.4</b> Coeficiente de determinación</a></li>
+<li class="chapter" data-level="7.5" data-path="validaciones-en-relación-al-tamaño-de-la-muestra.html"><a href="validaciones-en-relación-al-tamaño-de-la-muestra.html"><i class="fa fa-check"></i><b>7.5</b> Validaciones en relación al tamaño de la muestra</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="validaciones-en-relación-al-tamaño-de-la-muestra.html"><a href="validaciones-en-relación-al-tamaño-de-la-muestra.html#distancias-de-cook"><i class="fa fa-check"></i><b>7.5.1</b> Distancias de Cook</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="análisis-gráfico.html"><a href="análisis-gráfico.html"><i class="fa fa-check"></i><b>7.6</b> Análisis gráfico</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="análisis-gráfico.html"><a href="análisis-gráfico.html#coeficiente-de-variación-y-rrmse"><i class="fa fa-check"></i><b>7.6.1</b> Coeficiente de variación y RRMSE</a></li>
+<li class="chapter" data-level="7.6.2" data-path="análisis-gráfico.html"><a href="análisis-gráfico.html#error-estándar-y-rrmse"><i class="fa fa-check"></i><b>7.6.2</b> Error estándar y RRMSE</a></li>
+<li class="chapter" data-level="7.6.3" data-path="análisis-gráfico.html"><a href="análisis-gráfico.html#boxplot-cv-directo"><i class="fa fa-check"></i><b>7.6.3</b> Boxplot: CV Directo</a></li>
+<li class="chapter" data-level="7.6.4" data-path="análisis-gráfico.html"><a href="análisis-gráfico.html#boxplot-cv-directo-y-rrmse-fh-observados"><i class="fa fa-check"></i><b>7.6.4</b> Boxplot: CV Directo y RRMSE FH (observados)</a></li>
+<li class="chapter" data-level="7.6.5" data-path="análisis-gráfico.html"><a href="análisis-gráfico.html#boxplot-cv-directo-y-rrmse-fh"><i class="fa fa-check"></i><b>7.6.5</b> Boxplot: CV Directo y RRMSE FH</a></li>
+<li class="chapter" data-level="7.6.6" data-path="análisis-gráfico.html"><a href="análisis-gráfico.html#boxplot-error-estándar-directo-y-rmse-fh-observados"><i class="fa fa-check"></i><b>7.6.6</b> Boxplot: Error estándar Directo y RMSE FH (observados)</a></li>
+<li class="chapter" data-level="7.6.7" data-path="análisis-gráfico.html"><a href="análisis-gráfico.html#boxplot-error-estándar-directo-y-rmse-fh"><i class="fa fa-check"></i><b>7.6.7</b> Boxplot: Error estándar Directo y RMSE FH</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="matriz-vecinos-cercanos.html"><a href="matriz-vecinos-cercanos.html"><i class="fa fa-check"></i><b>7.7</b> Matriz vecinos cercanos</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="benchmark-regional-para-las-estimaciones-del-modelo-de-área.html"><a href="benchmark-regional-para-las-estimaciones-del-modelo-de-área.html"><i class="fa fa-check"></i><b>8</b> Benchmark regional para las estimaciones del modelo de área</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lectura-de-librerías-4.html"><a href="lectura-de-librerías-4.html"><i class="fa fa-check"></i><b>8.1</b> Lectura de librerías</a></li>
+<li class="chapter" data-level="8.2" data-path="lectura-de-bases-de-datos-1.html"><a href="lectura-de-bases-de-datos-1.html"><i class="fa fa-check"></i><b>8.2</b> Lectura de bases de datos</a></li>
+<li class="chapter" data-level="8.3" data-path="estimación-directa-por-región.html"><a href="estimación-directa-por-región.html"><i class="fa fa-check"></i><b>8.3</b> Estimación directa por región</a></li>
+<li class="chapter" data-level="8.4" data-path="consolidación-de-la-base-de-datos.html"><a href="consolidación-de-la-base-de-datos.html"><i class="fa fa-check"></i><b>8.4</b> Consolidación de la base de datos</a></li>
+<li class="chapter" data-level="8.5" data-path="pesos-benchmark.html"><a href="pesos-benchmark.html"><i class="fa fa-check"></i><b>8.5</b> Pesos Benchmark</a></li>
+<li class="chapter" data-level="8.6" data-path="estimación-fh-benchmark.html"><a href="estimación-fh-benchmark.html"><i class="fa fa-check"></i><b>8.6</b> Estimación FH Benchmark</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="estimación-fh-benchmark.html"><a href="estimación-fh-benchmark.html#validación-estimación-fh-con-benchmark"><i class="fa fa-check"></i><b>8.6.1</b> Validación: Estimación FH con Benchmark</a></li>
+<li class="chapter" data-level="8.6.2" data-path="estimación-fh-benchmark.html"><a href="estimación-fh-benchmark.html#comparación-gráfica-entre-estimación-fh-y-fh-con-benchmark-por-dominio"><i class="fa fa-check"></i><b>8.6.2</b> Comparación gráfica entre estimación FH y FH con Benchmark por dominio</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="tabla-final-de-estimaciones.html"><a href="tabla-final-de-estimaciones.html"><i class="fa fa-check"></i><b>8.7</b> Tabla final de estimaciones</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="tabla-final-de-estimaciones.html"><a href="tabla-final-de-estimaciones.html#función-para-el-calculo-de-intervalos-de-confianza"><i class="fa fa-check"></i><b>8.7.1</b> Función para el calculo de intervalos de confianza</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="creando-mapa-de-resultados.html"><a href="creando-mapa-de-resultados.html"><i class="fa fa-check"></i><b>8.8</b> Creando mapa de resultados</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="gráfico-comparativo-de-las-estimaciones..html"><a href="gráfico-comparativo-de-las-estimaciones..html"><i class="fa fa-check"></i><b>9</b> Gráfico comparativo de las estimaciones.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lectura-de-librerías-5.html"><a href="lectura-de-librerías-5.html"><i class="fa fa-check"></i><b>9.1</b> Lectura de librerías</a></li>
+<li class="chapter" data-level="9.2" data-path="lecturas-de-bases-de-datos..html"><a href="lecturas-de-bases-de-datos..html"><i class="fa fa-check"></i><b>9.2</b> Lecturas de bases de datos.</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a Informe de resultados para República Dominicana </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estimación de la tasa de informalidad en República Dominicana empleando modelos de área con transformación arcoseno</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cubrimiento-urbano" class="section level2 hasAnchor" number="2.11">
+<h2><span class="header-section-number">2.11</span> Cubrimiento urbano<a href="cubrimiento-urbano.html#cubrimiento-urbano" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La imagen satelital representa el cubrimiento urbano, en una escala de tonos que va desde el negro, que indica ausencia de construcciones urbanas, hasta el blanco, que representa la presencia de edificaciones. Esta variable es relevante porque permite identificar las zonas con mayor densidad de población.</p>
+<p>Sin embargo, al procesar los datos, se observó que la variable tiene un comportamiento asimétrico y la escala utilizada para representarla no es adecuada para mostrar los detalles más finos de la imagen. Para superar este problema y validar la información obtenida a través de la descarga de datos, se decidió aplicar una transformación logarítmica a la variable. En el siguiente bloque de código se describe el proceso detalladamente para obtener el mapa correspondiente.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="cubrimiento-urbano.html#cb35-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span></span>
+<span id="cb35-2"><a href="cubrimiento-urbano.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(poligonos_suma <span class="sc">%&gt;%</span> </span>
+<span id="cb35-3"><a href="cubrimiento-urbano.html#cb35-3" aria-hidden="true" tabindex="-1"></a>             <span class="fu">mutate</span>(<span class="at">cubrimiento_urbano =</span> <span class="fu">log</span>(cubrimiento_urbano <span class="sc">+</span> <span class="dv">1</span>)))</span>
+<span id="cb35-4"><a href="cubrimiento-urbano.html#cb35-4" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span></span>
+<span id="cb35-5"><a href="cubrimiento-urbano.html#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_shape</span>(poligonos_promedio <span class="sc">%&gt;%</span></span>
+<span id="cb35-6"><a href="cubrimiento-urbano.html#cb35-6" aria-hidden="true" tabindex="-1"></a>             <span class="fu">mutate</span>(<span class="at">cubrimiento_urbano =</span> <span class="fu">log</span>(cubrimiento_urbano <span class="sc">+</span> <span class="dv">1</span>)))</span>
+<span id="cb35-7"><a href="cubrimiento-urbano.html#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="cubrimiento-urbano.html#cb35-8" aria-hidden="true" tabindex="-1"></a>m1_cubrimiento_urbano <span class="ot">&lt;-</span></span>
+<span id="cb35-9"><a href="cubrimiento-urbano.html#cb35-9" aria-hidden="true" tabindex="-1"></a>  m1 <span class="sc">+</span> <span class="fu">tm_polygons</span>(</span>
+<span id="cb35-10"><a href="cubrimiento-urbano.html#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;cubrimiento_urbano&quot;</span>,</span>
+<span id="cb35-11"><a href="cubrimiento-urbano.html#cb35-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;cubrimiento_urbano(suma)&quot;</span>,</span>
+<span id="cb35-12"><a href="cubrimiento-urbano.html#cb35-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">&quot;YlOrRd&quot;</span></span>
+<span id="cb35-13"><a href="cubrimiento-urbano.html#cb35-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb35-14"><a href="cubrimiento-urbano.html#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-15"><a href="cubrimiento-urbano.html#cb35-15" aria-hidden="true" tabindex="-1"></a>m2_cubrimiento_urbano <span class="ot">&lt;-</span></span>
+<span id="cb35-16"><a href="cubrimiento-urbano.html#cb35-16" aria-hidden="true" tabindex="-1"></a>  m2 <span class="sc">+</span> <span class="fu">tm_polygons</span>(</span>
+<span id="cb35-17"><a href="cubrimiento-urbano.html#cb35-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;cubrimiento_urbano&quot;</span>,</span>
+<span id="cb35-18"><a href="cubrimiento-urbano.html#cb35-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;cubrimiento_urbano(media)&quot;</span>,</span>
+<span id="cb35-19"><a href="cubrimiento-urbano.html#cb35-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">&quot;YlOrRd&quot;</span></span>
+<span id="cb35-20"><a href="cubrimiento-urbano.html#cb35-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb35-21"><a href="cubrimiento-urbano.html#cb35-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-22"><a href="cubrimiento-urbano.html#cb35-22" aria-hidden="true" tabindex="-1"></a>map_cubrimiento_urbano <span class="ot">&lt;-</span> <span class="fu">tmap_arrange</span>(</span>
+<span id="cb35-23"><a href="cubrimiento-urbano.html#cb35-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(m1_cubrimiento_urbano,</span>
+<span id="cb35-24"><a href="cubrimiento-urbano.html#cb35-24" aria-hidden="true" tabindex="-1"></a>       m2_cubrimiento_urbano),</span>
+<span id="cb35-25"><a href="cubrimiento-urbano.html#cb35-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb35-26"><a href="cubrimiento-urbano.html#cb35-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">norw =</span> <span class="dv">1</span></span>
+<span id="cb35-27"><a href="cubrimiento-urbano.html#cb35-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-28"><a href="cubrimiento-urbano.html#cb35-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-29"><a href="cubrimiento-urbano.html#cb35-29" aria-hidden="true" tabindex="-1"></a><span class="fu">tmap_save</span>(map_cubrimiento_urbano,</span>
+<span id="cb35-30"><a href="cubrimiento-urbano.html#cb35-30" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;../map_temp/cubrimiento_urbano.jpg&quot;</span>,</span>
+<span id="cb35-31"><a href="cubrimiento-urbano.html#cb35-31" aria-hidden="true" tabindex="-1"></a>          <span class="at">width =</span> <span class="dv">3000</span>,</span>
+<span id="cb35-32"><a href="cubrimiento-urbano.html#cb35-32" aria-hidden="true" tabindex="-1"></a>          <span class="at">height =</span> <span class="dv">2000</span>,</span>
+<span id="cb35-33"><a href="cubrimiento-urbano.html#cb35-33" aria-hidden="true" tabindex="-1"></a>          <span class="at">asp =</span> <span class="dv">0</span></span>
+<span id="cb35-34"><a href="cubrimiento-urbano.html#cb35-34" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Como se puede notar la modificación realizada consistió en definir nuevamente los objetos <code>m1</code> y <code>m2</code>, donde incluimos la transformación logarítmica mediante el comando <code>mutate(cubrimiento_urbano = log(cubrimiento_urbano + 1))</code>. Es de mencionar, que para la variable original se le suma la constante <code>uno</code> para corregir errores del calculo, en caso que la variable posea un valor de <code>cero</code>. Ahora, al realizar la comparación entre las dos imágenes podemos vemos que la media, como medida de resumen muestra una mayor similitud con la mostrada del satélite.</p>
+<p>Como se puede notar, la modificación realizada en el código, en la cual se incluyó la transformación logarítmica de la variable <code>cubrimiento_urbano</code> para obtener un mapa que muestre una mejor correspondencia con la imagen satelital original. En primer lugar, se crearon nuevamente los objetos <code>m1</code> y <code>m2</code> utilizando el comando <code>tm_shape</code>. A continuación, se aplicó la transformación logarítmica mediante el comando <code>mutate(cubrimiento_urbano = log(cubrimiento_urbano + 1))</code>, donde se suma una constante de <code>uno</code> para evitar errores en el cálculo en caso de que la variable tenga un valor de <code>cero</code>.</p>
+<p>Al comparar la imagen obtenida mediante la transformación logarítmica con la imagen satelital original, no es claro cual de las dos imágenes representa de mejor forma la información capturada por el satélite. Dado que, las dos imágenes muestran valores altos en las ciudades principales, sin embargo, la figura de la suma muestra unos municipios en naranja que nos son reflejados por la gráfica obtenida con el promedio.</p>
+<p><img src="www/Figura6_000_cubrimiento_urbano.png" width="500px" height="350px" style="display: block; margin: auto;" /><img src="../map_temp/cubrimiento_urbano.jpg" width="500px" height="350px" style="display: block; margin: auto;" /></p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="accesibilidad-hospitales.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cubrimiento-cultivo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/psirusteam/2021ASDA/02-Imagenes_satelitales.rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Informe de resultados para República Dominicana.pdf", "Informe de resultados para República Dominicana.epub", "Informe de resultados para República Dominicana.mobi"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"tconfig": null
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

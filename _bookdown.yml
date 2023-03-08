@@ -1,0 +1,41 @@
+book_filename: "Informe de resultados para República Dominicana"
+delete_merged_file: true
+output_dir: "docs"
+new_session: yes
+
+rmd_files: [
+  "index.Rmd",
+  
+  "01-Configurar_R.rmd",
+  "02-Imagenes_satelitales.rmd",
+  "03-Estandarizar_las_insumos.rmd",
+  "04-Estimación_HT.rmd",
+  "05-FuncionGenVar.Rmd",
+  "06-EstimacionSAE.Rmd",
+  "07-fh_emdi.Rmd",
+  "08-FHBench.Rmd",
+  "09-Grafico_BENCH.Rmd"
+]
+
+language:
+  label:
+    fig: 'Figura '
+    tab: 'Tabla '
+    eq: 'Equación '
+    thm: 'Teorema '
+    lem: 'Lema '
+    cor: 'Corolario '
+    prp: 'Resultado '
+    cnj: 'Conjectura '
+    def: 'Definición '
+    exm: 'Ejemplo '
+    exr: 'Ejercicio '
+    hyp: 'Hipótesis '
+    proof: 'Prueba. '
+    remark: 'Comentario. '
+    solution: 'Solución. '
+  ui:
+    edit: Edit
+    chapter_name: 'Capítulo '
+    appendix_name: 'Apéndice '
+    refs_names: 'Referencias '

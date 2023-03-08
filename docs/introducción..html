@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 2 Introducción. | Informe de resultados para República Dominicana</title>
+  <meta name="description" content="Documentos con la descripción del proceso de compilación en R." />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 2 Introducción. | Informe de resultados para República Dominicana" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Documentos con la descripción del proceso de compilación en R." />
+  <meta name="github-repo" content="psirusteam/HHS-Handbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 2 Introducción. | Informe de resultados para República Dominicana" />
+  
+  <meta name="twitter:description" content="Documentos con la descripción del proceso de compilación en R." />
+  
+
+<meta name="author" content="Andrés Gutiérrez, Stalyn Guerrero" />
+
+
+<meta name="date" content="2023-03-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="instalación-de-rgee.html"/>
+<link rel="next" href="librerias-requeridas.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Informe de resultados para República Dominicana</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a></li>
+<li class="chapter" data-level="1" data-path="uso-de-imágenes-satelitales-y-sae.html"><a href="uso-de-imágenes-satelitales-y-sae.html"><i class="fa fa-check"></i><b>1</b> Uso de imágenes satelitales y SAE</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="fuentes-de-datos-de-imágenes-satelitales.html"><a href="fuentes-de-datos-de-imágenes-satelitales.html"><i class="fa fa-check"></i><b>1.1</b> Fuentes de datos de imágenes satelitales</a></li>
+<li class="chapter" data-level="1.2" data-path="google-earth-eninge.html"><a href="google-earth-eninge.html"><i class="fa fa-check"></i><b>1.2</b> Google Earth Eninge</a></li>
+<li class="chapter" data-level="1.3" data-path="instalación-de-rgee.html"><a href="instalación-de-rgee.html"><i class="fa fa-check"></i><b>1.3</b> Instalación de rgee</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducción..html"><a href="introducción..html"><i class="fa fa-check"></i><b>2</b> Introducción.</a></li>
+<li class="chapter" data-level="3" data-path="librerias-requeridas.html"><a href="librerias-requeridas.html"><i class="fa fa-check"></i><b>3</b> Librerias requeridas</a></li>
+<li class="chapter" data-level="4" data-path="inicializando-google-earth-engine-desde-r.html"><a href="inicializando-google-earth-engine-desde-r.html"><i class="fa fa-check"></i><b>4</b> Inicializando Google Earth Engine desde R</a></li>
+<li class="chapter" data-level="5" data-path="descarga-de-información-del-satélite-a-nivel-distrito..html"><a href="descarga-de-información-del-satélite-a-nivel-distrito..html"><i class="fa fa-check"></i><b>5</b> Descarga de información del Satélite a nivel distrito.</a></li>
+<li class="chapter" data-level="6" data-path="descarga-de-información-satélite-a-nivel-municipal.html"><a href="descarga-de-información-satélite-a-nivel-municipal.html"><i class="fa fa-check"></i><b>6</b> Descarga de información Satélite a nivel municipal</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="luces-nocturnas.html"><a href="luces-nocturnas.html"><i class="fa fa-check"></i><b>6.1</b> Luces nocturnas</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="luces-nocturnas.html"><a href="luces-nocturnas.html#medida-de-resumen-la-media"><i class="fa fa-check"></i><b>6.1.1</b> Medida de resumen la media</a></li>
+<li class="chapter" data-level="6.1.2" data-path="luces-nocturnas.html"><a href="luces-nocturnas.html#medida-de-resumen-suma"><i class="fa fa-check"></i><b>6.1.2</b> Medida de resumen suma</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="cubrimiento-de-suelo-urbano-y-cubrimiento-de-suelo-cultivos.html"><a href="cubrimiento-de-suelo-urbano-y-cubrimiento-de-suelo-cultivos.html"><i class="fa fa-check"></i><b>6.2</b> Cubrimiento de suelo urbano y cubrimiento de suelo cultivos</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="cubrimiento-de-suelo-urbano-y-cubrimiento-de-suelo-cultivos.html"><a href="cubrimiento-de-suelo-urbano-y-cubrimiento-de-suelo-cultivos.html#medida-de-resumen-la-media-1"><i class="fa fa-check"></i><b>6.2.1</b> Medida de resumen la media</a></li>
+<li class="chapter" data-level="6.2.2" data-path="cubrimiento-de-suelo-urbano-y-cubrimiento-de-suelo-cultivos.html"><a href="cubrimiento-de-suelo-urbano-y-cubrimiento-de-suelo-cultivos.html#medida-de-resumen-suma-1"><i class="fa fa-check"></i><b>6.2.2</b> Medida de resumen suma</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="distancia-a-hospitales.html"><a href="distancia-a-hospitales.html"><i class="fa fa-check"></i><b>6.3</b> Distancia a hospitales</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="distancia-a-hospitales.html"><a href="distancia-a-hospitales.html#medida-de-resumen-la-media-2"><i class="fa fa-check"></i><b>6.3.1</b> Medida de resumen la media</a></li>
+<li class="chapter" data-level="6.3.2" data-path="distancia-a-hospitales.html"><a href="distancia-a-hospitales.html#medida-de-resumen-suma-2"><i class="fa fa-check"></i><b>6.3.2</b> Medida de resumen suma</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="csp-ghm-global-human-modification.html"><a href="csp-ghm-global-human-modification.html"><i class="fa fa-check"></i><b>6.4</b> CSP gHM: Global Human Modification</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="csp-ghm-global-human-modification.html"><a href="csp-ghm-global-human-modification.html#medida-de-resumen-la-media-3"><i class="fa fa-check"></i><b>6.4.1</b> Medida de resumen la media</a></li>
+<li class="chapter" data-level="6.4.2" data-path="csp-ghm-global-human-modification.html"><a href="csp-ghm-global-human-modification.html#medida-de-resumen-suma-3"><i class="fa fa-check"></i><b>6.4.2</b> Medida de resumen suma</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="consolidando-las-variables-satelitales.html"><a href="consolidando-las-variables-satelitales.html"><i class="fa fa-check"></i><b>7</b> Consolidando las variables satelitales</a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="consolidando-las-variables-satelitales.html"><a href="consolidando-las-variables-satelitales.html#medida-de-resumen-la-media-4"><i class="fa fa-check"></i><b>7.0.1</b> Medida de resumen la media</a></li>
+<li class="chapter" data-level="7.0.2" data-path="consolidando-las-variables-satelitales.html"><a href="consolidando-las-variables-satelitales.html#medida-de-resumen-suma-4"><i class="fa fa-check"></i><b>7.0.2</b> Medida de resumen suma</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="creando-mapas-de-las-variables-satelitales.html"><a href="creando-mapas-de-las-variables-satelitales.html"><i class="fa fa-check"></i><b>8</b> Creando mapas de las variables satelitales</a>
+<ul>
+<li class="chapter" data-level="8.0.1" data-path="creando-mapas-de-las-variables-satelitales.html"><a href="creando-mapas-de-las-variables-satelitales.html#modificacion-humana"><i class="fa fa-check"></i><b>8.0.1</b> Modificacion humana</a></li>
+<li class="chapter" data-level="8.0.2" data-path="creando-mapas-de-las-variables-satelitales.html"><a href="creando-mapas-de-las-variables-satelitales.html#accesibilidad-hospitales-caminado"><i class="fa fa-check"></i><b>8.0.2</b> Accesibilidad hospitales caminado</a></li>
+<li class="chapter" data-level="8.1" data-path="accesibilidad-hospitales.html"><a href="accesibilidad-hospitales.html"><i class="fa fa-check"></i><b>8.1</b> Accesibilidad hospitales</a></li>
+<li class="chapter" data-level="8.2" data-path="cubrimiento-urbano.html"><a href="cubrimiento-urbano.html"><i class="fa fa-check"></i><b>8.2</b> Cubrimiento urbano</a></li>
+<li class="chapter" data-level="8.3" data-path="cubrimiento-cultivo.html"><a href="cubrimiento-cultivo.html"><i class="fa fa-check"></i><b>8.3</b> Cubrimiento cultivo</a></li>
+<li class="chapter" data-level="8.4" data-path="luces-nocturnas-1.html"><a href="luces-nocturnas-1.html"><i class="fa fa-check"></i><b>8.4</b> Luces nocturnas</a></li>
+<li class="chapter" data-level="8.5" data-path="correlación-estimación-directa.html"><a href="correlación-estimación-directa.html"><i class="fa fa-check"></i><b>8.5</b> Correlación estimación directa</a></li>
+<li class="chapter" data-level="8.6" data-path="estimaciones-directas.html"><a href="estimaciones-directas.html"><i class="fa fa-check"></i><b>8.6</b> Estimaciones directas</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="estimaciones-directas.html"><a href="estimaciones-directas.html#correlación-de-las-variables-satelital"><i class="fa fa-check"></i><b>8.6.1</b> Correlación de las variables satelital</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="información-auxiliar-en-el-modelo.html"><a href="información-auxiliar-en-el-modelo.html"><i class="fa fa-check"></i><b>9</b> Información auxiliar en el modelo</a></li>
+<li class="divider"></li>
+<li><a Informe de resultados para República Dominicana </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Informe de resultados para República Dominicana</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introducción." class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Introducción.<a href="introducción..html#introducción." class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>La técnica de estimación de áreas pequeñas de Fay-Herriot, se basa en la combinación de información de una muestra de la población y de una fuente auxiliar, como las imágenes satelitales. Esta técnica se utiliza para mejorar la precisión de las estimaciones de áreas pequeñas, especialmente cuando la muestra de la población es limitada o no es representativa de la población completa.</p>
+<p>Las imágenes satelitales pueden proporcionar información sobre características geográficas y ambientales de una zona, como la densidad de vegetación, el tipo de suelo, el uso del suelo, la topografía, entre otros. Esta información se puede utilizar para mejorar las estimaciones de las características de la población que se está estudiando.</p>
+<p>La técnica Fay-Herriot es muy útil en áreas pequeñas donde la variabilidad de los datos es alta y la muestra es limitada. Las imágenes satelitales pueden ayudar a compensar la falta de información y proporcionar una fuente adicional de datos para mejorar las estimaciones.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="instalación-de-rgee.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="librerias-requeridas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/psirusteam/2021ASDA/02-Imagenes_satelitales.rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Informe de resultados para República Dominicana.pdf", "Informe de resultados para República Dominicana.epub", "Informe de resultados para República Dominicana.mobi"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"tconfig": null
+});
+});
+</script>
+
+</body>
+
+</html>
