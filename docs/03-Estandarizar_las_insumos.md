@@ -7,7 +7,7 @@ author:
   affiliation: CEPAL - Unidad de Estadísticas Sociales
 - name: Stalyn Guerrero
   affiliation: CEPAL - Unidad de Estadísticas Sociales
-date: '2023-03-08'
+date: '2023-03-09'
 format: html
 project:
   type: website

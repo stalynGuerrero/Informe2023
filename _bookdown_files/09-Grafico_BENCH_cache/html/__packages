@@ -16,3 +16,6 @@ Matrix
 survival
 survey
 srvyr
+sf
+sp
+tmap

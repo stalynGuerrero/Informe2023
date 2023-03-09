@@ -27,6 +27,9 @@ library(tidyr)
 library(forcats)
 library(survey)
 library(srvyr)
+library(sf)
+library(sp)
+library(tmap)
 ```
 
 ## Lecturas de bases de datos. 
@@ -152,10 +155,42 @@ Finalmente, la capa `labs()` se utiliza para agregar etiquetas a los ejes del gr
 
 
 # Resultados finales 
+El mapa con los resultados es el siguiente. 
+
+```{r, echo=FALSE}
+poligonos_dominios <- read_sf( "../shapefiles2010/DOM.shp") 
+estimacionesBench <- readRDS('../Data/estimacionesBench.Rds')
+temp_Bench <- estimacionesBench %>%
+  transmute(
+    id_dominio,
+    FH_RBench = FH_RBench * 100)
+
+poligonos_dominios <- poligonos_dominios %>%
+  left_join( temp_Bench, by = "id_dominio" ) 
+
+tmap_options(check.and.fix = TRUE)
+mapa <- tm_shape( poligonos_dominios ) +
+  tm_fill( "FH_RBench",
+           style = "quantile", title="Tasa de informalidad" ) +
+  tm_borders( col = "black", lwd=1, lty = "solid") +
+  tm_layout( #"Wealth (or so)",
+    legend.title.size = 1,
+    legend.text.size = 0.6,
+    legend.position = c( "center","bottom" ),
+    legend.bg.color = "white",
+    legend.stack = "horizontal",
+    #legend.digits = 5,
+    legend.bg.alpha = 0.1) 
+mapa
+
+```
+
+Los valores puntuales para cada municipios se muestran a continuación  siguientes:
+
 ```{r, echo=FALSE}
 TablaFinal <- readRDS('../Data/TablaFinal.Rds')
 TablaFinal %>% transmute("Codico del municipio" = id_dominio, 
-                      Estimacion = FH_RBench, 
+                      Estimacion = FH_RBench*100, 
                       "Error estandar" = rmse_FH, 
                       "CV(%)" = rrmse_FH*100
                       ) %>% arrange(`CV(%)`) %>% tba()

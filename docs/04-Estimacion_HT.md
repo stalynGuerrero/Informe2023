@@ -1,0 +1,98 @@
+
+
+# Estimación de directa por dominios 
+En este apartado realizaremos las estimaciones directas para los dominios que fueron seleccionados en la muestra, dado que estos fueron no planeados. Las estimaciones directas son una herramienta comúnmente utilizada en la estadística inferencial para obtener información sobre una población a partir de una muestra. Sin embargo, estas estimaciones pueden presentar problemas cuando la muestra es pequeña, lo que puede conducir a una falta de precisión en las estimaciones y a una mayor incertidumbre en las conclusiones que se puedan extraer. 
+
+## Lectura de librerías
+
+Las librerías survey, tidyverse, srvyr y TeachingSampling son fundamentales para el análisis de datos de encuestas. survey es una librería que proporciona herramientas para el análisis de datos complejos de encuestas, permitiendo la incorporación de pesos y diseños complejos de muestreo. 
+
+
+```r
+library(survey)
+library(tidyverse)
+library(srvyr)
+library(TeachingSampling)
+```
+
+
+## Lectura de la encuesta y definición de parámetros
+
+Este código carga los datos de la encuesta y define la variable `id_dominio` que se utiliza como identificador único del dominio de estudio a lo largo del código. Luego, se realiza una serie de transformaciones en los datos mediante la función `mutate()` del paquete `dplyr`.
+
+La primera transformación utiliza la función `str_pad()` para agregar ceros a la izquierda de la variable `upm` hasta que tenga una longitud de 9 caracteres. La variable `upm` es un identificador único para cada Unidad Primaria de Muestreo (UPM) en la encuesta. La segunda transformación hace lo mismo para la variable estrato
+
+Por último, se crea una nueva variable llamada factor_anual que representa el factor de expansión de la encuesta dividido por 4. Este factor se utiliza para ajustar las estimaciones de la encuesta y obtener estimaciones representativas de la población objetivo.
+
+
+```r
+encuestaDOM <-  readRDS("../Data/encuestaDOM.Rds")
+id_dominio <- "id_dominio"
+encuestaDOM <-
+  encuestaDOM %>%
+  mutate(
+    upm = str_pad(string = upm,width = 9,pad = "0"),
+    estrato = str_pad(string = estrato,width = 5,pad = "0"),
+    factor_anual = factor_expansion / 4
+  )
+```
+
+## Definición del diseño muestral con la libreria survey 
+
+Este código establece el diseño muestral complejo para el análisis de la Encuesta. En particular, se establecen las opciones de ajuste para el tratamiento de los PSUs solitarios (unidades primarias de muestreo con un solo elemento). Luego, se define el diseño utilizando la función `as_survey_design()` del paquete `survey`, especificando las variables de estratificación, el identificador de las UPM, los pesos de muestreo y la opción `nest=T` para indicar que el diseño es anidado, es decir, que los datos de cada unidad secundaria de muestreo (hogar) están contenidos dentro de su Unidad Primaria de Muestreo. 
+
+
+```r
+options(survey.lonely.psu= 'adjust' )
+disenoDOM <- encuestaDOM %>%
+  as_survey_design(
+    strata = estrato,
+    ids = upm,
+    weights = factor_anual,
+    nest=T
+  )
+```
+
+## Calculo del indicador 
+
+Este bloque de código realiza lo siguiente:
+
+  -   Se agrupa la encuesta por id_dominio.
+  -   Se filtran los casos en los que la variable `ocupado` es igual a 1 y la variable `pet` es igual a 1.
+  -   Se calcula el tamaño muestral no ponderado (`n()`).
+  -   Se calcula la razón de la variable `orden_sector` igual a 2 sobre la variable constante igual a 1 mediante el uso de `survey_ratio()`, que utiliza los pesos de muestreo para producir estimaciones de varianza y errores estándar apropiados para el muestreo complejo.
+  -   La función `survey_ratio()` también permite calcular intervalos de confianza y coeficientes de variación.
+
+
+```r
+indicador_dom <-
+  disenoDOM %>% group_by_at(id_dominio) %>% 
+  filter(ocupado == 1 & pet == 1) %>%
+  summarise(
+    n = unweighted(n()),
+    Rd = survey_ratio(
+      numerator = orden_sector == 2 ,
+      denominator = 1,
+      vartype = c("se", "ci", "var", "cv"),
+      deff = T
+    )
+  )
+```
+
+Este código realiza un `full_join` entre `indicador_dom` y un `data.frame` que contiene únicamente las variables `id_dominio` y `des_municipio` de `encuestaDOM`. El resultado de esta unión es que a `indicador_dom` se le agrega la variable des_municipio correspondiente al nombre de cada municipio. 
+
+
+```r
+indicador_dom <-
+  full_join(indicador_dom, distinct((
+    encuestaDOM %>% dplyr::select(id_dominio, des_municipio)
+  )), by = id_dominio) 
+```
+
+### Guardar resultado de la estimación directa 
+
+
+```r
+saveRDS(indicador_dom,'Data/indicador_dom.Rds' )
+```
+

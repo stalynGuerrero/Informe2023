@@ -8,8 +8,8 @@ rmd_files: [
   
   "01-Configurar_R.rmd",
   "02-Imagenes_satelitales.rmd",
-  "03-Estandarizar_las_insumos.rmd",
-  "04-Estimación_HT.rmd",
+  "03-Estandarizar_los_insumos.rmd",
+  "04-Estimacion_HT.rmd",
   "05-FuncionGenVar.Rmd",
   "06-EstimacionSAE.Rmd",
   "07-fh_emdi.Rmd",

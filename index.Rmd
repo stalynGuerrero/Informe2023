@@ -69,7 +69,7 @@ thematic_on(
 
 La versión online de este documento está licenciada bajo una [Licencia Internacional de Creative Commons para compartir con atribución no comercial 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/). 
 
-El diagrama del flujo de trabajo seguido para la implentación de la metodología es la siguiente.  
+El diagrama del flujo de trabajo seguido para implementar la metodología es la siguiente.  
 
 ```{r echo=FALSE, out.width = "800px", out.height="1200px",fig.align='center'}
 knitr::include_graphics("www/Figura0_000_Workflow_modelo_area.jpg")
